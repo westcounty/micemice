@@ -44,14 +44,14 @@ Release 页面：
 - `https://github.com/westcounty/micemice/releases/tag/v1.0.0`
 
 当前提供文件：
-1. `micemice-v1.0.0-app-release-unsigned.apk`
-2. `micemice-v1.0.0-app-release.aab`
+1. `micemice-v1.0.0-app-release-signed.apk`
+2. `micemice-v1.0.0-app-release-signed.aab`
 3. `SHA256SUMS.txt`
 4. `RELEASE_NOTES.md`
 
 说明：
-1. `app-release-unsigned.apk` 为未签名包，不能直接安装到手机。
-2. `aab` 适合发布流程（应用商店/内部分发流水线）。
+1. `signed.apk` 为可安装包（已签名）。
+2. `signed.aab` 适合发布流程（应用商店/内部分发流水线）。
 
 如需本地快速安装测试，建议从源码构建 Debug 包：
 ```powershell
@@ -122,6 +122,11 @@ Get-FileHash .\app\build\outputs\bundle\release\app-release.aab -Algorithm SHA25
 ./gradlew.bat assembleRelease
 ./gradlew.bat bundleRelease
 ```
+
+Release 签名配置：
+1. 复制 `keystore.properties.example` 为本地 `keystore.properties`
+2. 填写 `storeFile/storePassword/keyAlias/keyPassword`
+3. `keystore.properties` 与 `app/keystore/` 已加入 `.gitignore`，不会被提交
 
 ## License
 
